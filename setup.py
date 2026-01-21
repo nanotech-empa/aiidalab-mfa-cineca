@@ -6,7 +6,6 @@ setup(
     version="0.1.0",
     description="AiiDAlab app for MFA authentication with CINECA HPC",
     author="nanotech-empa",
-    author_email="",
     url="https://github.com/nanotech-empa/aiidalab-mfa-cineca",
     packages=find_packages(),
     install_requires=[

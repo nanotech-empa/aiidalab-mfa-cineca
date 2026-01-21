@@ -39,6 +39,14 @@ curl -L -o step.tar.gz "$STEP_URL"
 echo "Extracting archive..."
 tar -xzf step.tar.gz
 
+# Find the step binary (could be in various locations)
+STEP_BIN=$(find . -name "step" -type f -executable | head -1)
+
+if [ -z "$STEP_BIN" ]; then
+    echo "Error: Could not find step binary in extracted archive"
+    exit 1
+fi
+
 # Install to /usr/local/bin (or ~/.local/bin if not root)
 if [ -w /usr/local/bin ]; then
     INSTALL_DIR="/usr/local/bin"
@@ -48,7 +56,7 @@ else
 fi
 
 echo "Installing step to $INSTALL_DIR..."
-cp "step_${STEP_VERSION}/bin/step" "$INSTALL_DIR/"
+cp "$STEP_BIN" "$INSTALL_DIR/"
 chmod +x "$INSTALL_DIR/step"
 
 # Clean up
