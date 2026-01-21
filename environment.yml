@@ -1,0 +1,8 @@
+name: aiidalab-mfa-cineca
+channels:
+  - conda-forge
+dependencies:
+  - python>=3.7
+  - pip
+  - pip:
+    - aiidalab>=21.0.0
